@@ -77,12 +77,20 @@ def convertToArticleName(id: int) -> str:
 
 
 def convertPathToNames(idpath: List[int])-> List[str]:
-    """Converts a path in the form of article IDs to article Titles"""
-    output = []
+    """ Redundent: Converts a path in the form of article IDs to article Titles"""
+    """output = []
     for item in idpath:
         output.append(convertToArticleName(item))
+    return output"""
+    
+    """Converts a path of article IDs to a list of article names
+    Returns:
+        str: Formatted string with *arrows* and article names
+    """
+    names = [convertToArticleName(str(article_id)) for article_id in idpath]
+    names = [name for name in names if name]  # Remove empty strings
 
-    return output
+    return " → ".join(names)
 
 def numLinksOnArticle(title, forward = True):
 
